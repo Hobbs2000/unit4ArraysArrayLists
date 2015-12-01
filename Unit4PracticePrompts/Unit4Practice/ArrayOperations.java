@@ -1,6 +1,5 @@
 public class ArrayOperations
-{
-    
+{    
     public static void main(String[] args)
     {
         double[] doubles = {8.0, 4.0, 5.0, 21.0, 7.0, 9.0, 18.0, 2.0, 100.0};
@@ -26,6 +25,12 @@ public class ArrayOperations
         for(int i = doubles.length-1; i >= 0; i--)
         {
             System.out.println("Value at Index["+i+"]: "+doubles[i]);
+        }
+        
+        //Enhanced for loop
+        for (double value : doubles)
+        {
+            System.out.println(value);
         }
     }
 }
