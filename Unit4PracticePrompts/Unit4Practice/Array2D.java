@@ -57,11 +57,9 @@ public class Array2D
     }
     
     public void animate()
-    {
-        
+    { 
         for (int r = 0; r < this.counts.length; r++)
         {
-            //counts[r].length gets the amount of elements in that row
             for (int c = 0; c < this.counts[r].length; c++)
             {
                 this.counts[r][c] = 0;
@@ -70,11 +68,41 @@ public class Array2D
         
         for (int r = 0; r < this.counts.length; r++)
         {
-            //counts[r].length gets the amount of elements in that row
             for (int c = 0; c < this.counts[r].length; c++)
             {
                 this.counts[r][c] = 1;
+                if (r != 0)
+                {
+                    this.counts[r-1][c] = 0;
+                }
+                
+                for (int row = 0; row < this.counts.length; row++)
+                {
+                    for (int col = 0; col < this.counts[r].length; col++)
+                    {
+                        System.out.print(this.counts[row][col]);
+                    }
+                }
+                System.out.println();
+                try
+                {
+                    Thread.sleep(100);
+                }
+                catch (InterruptedException ex)
+                {
+                    ex.printStackTrace();
+                }
             }
         }
     }
 }
+/**
+ *                 try
+                {
+                    Thread.sleep(250);
+                }
+                catch (InterruptedException ex)
+                {
+                    ex.printStackTrace();
+                }
+ */
