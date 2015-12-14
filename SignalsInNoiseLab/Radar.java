@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * The model for radar scan and accumulator
  * 
@@ -34,11 +34,8 @@ public class Radar
     public Radar(int rows, int cols)
     {
         // initialize the currentScan 2D array and the accumulator 2D array
-        
-        
-        //
-        // !!! add code here !!!
-        //
+        this.currentScan = new boolean[rows][cols];
+        this.accumulator = new int[rows][cols];
         
         
         // randomly set the location of the monster (can be explicity set through the
@@ -58,15 +55,21 @@ public class Radar
     {
         // algorithm for performing a scan:
         //    1. set all cells in the currentScan 2D array to false
+        for (int i = 0; i < this.currentScan.length; i++)
+        {
+            for (boolean cell : this.currentScan[i])
+            {
+                cell = false;
+            }
+        }
         //    2. set the location of the monster in the currentScan 2D array
+        this.currentScan[this.monsterLocationRow][this.monsterLocationCol] = true;
         //    3. inject noise into the grid
+        injectNoise();
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
+        
         //    5. increment the numScans instance variable
-        
-        
-        //
-        // !!! add code here !!!
-        //
+        this.numScans++;
         
         
     }
@@ -166,12 +169,13 @@ public class Radar
         // detected as a false positive. Use the Math.random method to determine if each cell should be set
         // as a false positive.
         
-        
-        //
-        // !!! add code here !!!
-        //
-        
-        
+        int numFalsePositives = (int)((this.currentScan.length*this.currentScan[0].length)*this.noiseFraction);
+        for (int i = 0; i < numFalsePositives; i++)
+        {
+            int row = (int)(Math.random() * this.currentScan.length);
+            int col = (int)(Math.random() * this.currentScan[0].length);
+            this.currentScan[row][col] = true;
+        }
     }
     
 }
