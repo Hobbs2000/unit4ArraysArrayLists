@@ -35,6 +35,9 @@ public class RadarTest
     {
     }
    
+    /**
+     * Will check to see if the scanner finds the correct location of the monster
+     */
     @Test
     public void isMonsterDetected()
     {
